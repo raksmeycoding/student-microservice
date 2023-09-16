@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://34.124.162.41/studentDb
+    username: user
+    password: 1111
+  jpa:
+    database: POSTGRESQL
+    hibernate.ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: 1000

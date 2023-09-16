@@ -1,0 +1,5 @@
+rootProject.name = 'sudent-book-mircroservice'
+include 'course-service'
+include 'common-service'
+include 'student-service'
+
