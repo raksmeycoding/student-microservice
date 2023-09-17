@@ -1,6 +1,7 @@
 package com.microservice.studentservice.service.ServiceImpl;
 
 
+import com.microservice.studentservice.dto.StudentResponseDto;
 import com.microservice.studentservice.entity.Student;
 import com.microservice.studentservice.repository.StudentRepository;
 import com.microservice.studentservice.request.StudentRequest;
@@ -30,15 +31,17 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public Student getStudentById(UUID studentId) {
+    public StudentResponseDto getStudentById(UUID studentId) {
         var findStudent = findStudentById(studentId);
         var findCourse = webClient.get()
                 .uri("http://localhost:2000/api/v1/course/" + findStudent.getCourseId())
                 .retrieve()
-                .bodyToMono(CourseDto.class).log()
+                .bodyToMono(CourseDto.CourseResponseDto.class).log()
                 .block();
-        System.out.println(findCourse);
-        return null;
+        return StudentResponseDto.builder()
+                .studentDto(findStudent.toStudentDto())
+                .courseDto(findCourse.getCourseDto())
+                .build();
     }
 
 

@@ -1,6 +1,7 @@
 package com.microservice.studentservice.service;
 
 import com.microservice.studentservice.dto.StudentDto;
+import com.microservice.studentservice.dto.StudentResponseDto;
 import com.microservice.studentservice.entity.Student;
 import com.microservice.studentservice.repository.StudentRepository;
 import com.microservice.studentservice.request.StudentRequest;
@@ -13,7 +14,7 @@ public interface StudentService {
 
     Student saveStudent(Student student);
 
-    Student getStudentById(UUID studentId);
+    StudentResponseDto getStudentById(UUID studentId);
 
     Student updateById(UUID studentId, StudentRequest studentRequest);
 

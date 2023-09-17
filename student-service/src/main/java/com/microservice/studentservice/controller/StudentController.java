@@ -34,10 +34,7 @@ public class StudentController {
     @GetMapping("{studentId}")
     public ResponseEntity<StudentResponseDto> getStudentById(@PathVariable UUID studentId) {
         return ResponseEntity.status(HttpStatus.OK).body(
-                StudentResponseDto.builder()
-                        .studentDto(studentService.getStudentById(studentId).toStudentDto())
-                        .courseDto(null)
-                        .build()
+                studentService.getStudentById(studentId)
         );
     }
 
